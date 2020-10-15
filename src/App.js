@@ -16,6 +16,18 @@ class App extends React.Component {
     rockets: []
   }
 
+  updateRocket = () => {
+    this.fetchData.getRockets()
+    .then( data => data.find( item => item.name === this.state.rocket ))
+    .then( rocketFeatures => {
+      this.setState( {rocketFeatures} )
+    })
+  }
+
+  componentDidMount(){
+    this.updateRocket();
+  }
+
   render() {
     return (
       <div className="App">
