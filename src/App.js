@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div className="App">
           <Header/>
-          <Main/>
+          <Main rocket={this.state.rocket}/>
           <Features/>
           <Footer/>
       </div>
