@@ -6,8 +6,10 @@ import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
 // import Calendar from './components/Calendar/Calendar';
 // import Details from './components/Details/Details';
+import FetchData from './FetchData';
 
 class App extends React.Component {
+  fetchData = new FetchData();
   state = {
     rocket: 'Falcon 1',
     rocketFeatures: null,
