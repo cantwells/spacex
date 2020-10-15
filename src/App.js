@@ -31,6 +31,10 @@ class App extends React.Component {
     })
   }
 
+  changeRocket = rocket => {
+    this.setState({rocket}, this.updateRocket)
+  }
+
   componentDidMount(){
     this.getRockets();
     this.updateRocket();
