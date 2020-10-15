@@ -1,6 +1,7 @@
 import React from 'react';
 import './Features.css';
 import falcon from './img/falcon-1.png'
+import ReactRelluxWrapper from 'react-rellax-wrapper';
 
 const Features = () => {
     return(
@@ -28,12 +29,14 @@ const Features = () => {
                         </tr>
                     </thead>
                 </table>
-                <img
-                    src={falcon}
-                    alt="rocket"
-                    className="rocket"
-                    data-rellax-speed="14"
-                />
+                <ReactRelluxWrapper speed={14}>
+                    <img
+                        src={falcon}
+                        alt="rocket"
+                        className="rocket"
+                        data-rellax-speed="14"
+                    />
+                </ReactRelluxWrapper>
                 <article>
                     <h3 className="features-subtitle">DESCRIPTION</h3>
                     <p className="features-text">
