@@ -7,17 +7,23 @@ import Footer from './components/Footer/Footer';
 // import Calendar from './components/Calendar/Calendar';
 // import Details from './components/Details/Details';
 
-function App() {
-  return (
-    <div className="App">
-        <Header/>
-        <Main/>
-        <Features/>
-        <Footer/>
-        {/* <Calendar/> */}
-        {/* <Details/> */}
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    rocket: 'Falcon 1',
+    rocketFeatures: null,
+    rockets: []
+  }
+
+  render() {
+    return (
+      <div className="App">
+          <Header/>
+          <Main/>
+          <Features/>
+          <Footer/>
+      </div>
+    );
+  }
 }
 
 export default App;
