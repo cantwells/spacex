@@ -10,7 +10,6 @@ const rockets = {
 }
 
 const Features = ({rocketFeatures}) => {
-    console.log(rocketFeatures);
     return(
         <section className="features">
             <h2 className="features-title">{rocketFeatures.name} <br />Overview</h2>
