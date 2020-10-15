@@ -43,7 +43,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-          <Header/>
+          <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
           <Main rocket={this.state.rocket}/>
           <Features/>
           <Footer/>
