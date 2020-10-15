@@ -16,6 +16,13 @@ class App extends React.Component {
     rockets: []
   }
 
+  getRockets = () => {
+    this.fetchData.getRockets()
+    .then(data => {
+      this.setState( { rockets: data.map( rocket => rocket.name)}) ;
+    })
+  }
+
   updateRocket = () => {
     this.fetchData.getRockets()
     .then( data => data.find( item => item.name === this.state.rocket ))
