@@ -14,7 +14,6 @@ const Details = () => {
                 .then( data =>  setLaunch(data.find( item => item.id === launchID )))
     }, [launchID])
     if(!launch) return null;
-    console.log(launch.links);
     return (
         <section className="details">
             <div className="container">
@@ -28,7 +27,7 @@ const Details = () => {
                     </div>
                 </div>
                 <div>
-                    <iframe className="details-youtube" width="560" height="315" src={launch.links ? launch.links.webcast : ''} frameBorder="0" allowFullScreen></iframe>
+                    <iframe className="details-youtube" width="560" height="315" src={launch.links ? `https://www.youtube.com/embed/${launch.links.youtube_id}` : ''} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </div>
                 <div onClick={() => {window.history.back()}} className="button button-back">go back</div>
