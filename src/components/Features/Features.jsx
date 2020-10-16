@@ -26,7 +26,8 @@ const Features = ({name, height, diameter, mass, payload_weights: payloadWeights
                             autoPlay 
                             loop 
                             muted 
-                            src={`./video/${videos[name]}.mp4`}>
+                            src={`./video/${videos.hasOwnProperty(name) ? videos[name] :
+                            videos.other }.mp4`}>
                     </video>
                 </div>
             </section>
