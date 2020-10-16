@@ -1,12 +1,13 @@
 import React from 'react';
 import './style.css';
 import Header from './components/Header/Header';
-import Main from './components/Main/Main';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
 // import Calendar from './components/Calendar/Calendar';
 // import Details from './components/Details/Details';
 import FetchData from './FetchData';
+import {BrowserRouter} from 'react-router-dom';
+import Home from './components/Home/Home';
 
 class App extends React.Component {
   fetchData = new FetchData();
@@ -14,7 +15,7 @@ class App extends React.Component {
     rocket: 'Falcon 1',
     rocketFeatures: null,
     rockets: [],
-    links: {}
+    company: null
   }
 
   getRockets = () => {
@@ -32,9 +33,9 @@ class App extends React.Component {
     })
   }
 
-  getLinks = () => {
+  updateCompany = () => {
     this.fetchData.getCompany()
-      .then( data =>  this.setState({links: data.links}))
+      .then( company =>  this.setState({company}))
     
   }
 
@@ -45,17 +46,20 @@ class App extends React.Component {
   componentDidMount(){
     this.getRockets();
     this.updateRocket();
-    this.getLinks();
+    this.updateCompany();
   }
 
   render() {
     return (
-      <div className="App">
-          <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
-          <Main rocket={this.state.rocket}/>
-          {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />} 
-          <Footer links={this.state.links}/>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+            <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
+            {/* {this.state.company && <Home company={this.state.company}/>} */}
+            {/* <Main rocket={this.state.rocket}/> */}
+            {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />} 
+            {this.state.company && <Footer {...this.state.company.links}/>}
+        </div>
+      </BrowserRouter>
     );
   }
 }
