@@ -3,10 +3,10 @@ import './style.css';
 import Header from './components/Header/Header';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
-// import Calendar from './components/Calendar/Calendar';
-// import Details from './components/Details/Details';
+import Calendar from './components/Calendar/Calendar';
+import Details from './components/Details/Details';
 import FetchData from './FetchData';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import Home from './components/Home/Home';
 
 class App extends React.Component {
@@ -54,9 +54,18 @@ class App extends React.Component {
       <BrowserRouter>
         <div className="App">
             <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
-            {/* {this.state.company && <Home company={this.state.company}/>} */}
-            {/* <Main rocket={this.state.rocket}/> */}
-            {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />} 
+            <Route exact path='/'>
+              {this.state.company && <Home company={this.state.company}/>}
+            </Route>
+            <Route path='/rocket'>
+              {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />} 
+            </Route>
+            <Route path='/calendar'>
+              <Calendar/>
+            </Route>
+            <Route path='/details'>
+              <Details/>
+            </Route>
             {this.state.company && <Footer {...this.state.company.links}/>}
         </div>
       </BrowserRouter>
