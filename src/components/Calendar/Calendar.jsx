@@ -13,7 +13,7 @@ const Calendar = () => {
     useEffect(() => {
         fetch.getLaunches().then( data => setLaunches(data));
     }, [])
-
+    // console.log(launches);
     return (
         <section className="calendar">
             <div className="container">
@@ -26,7 +26,7 @@ const Calendar = () => {
                                 </div>
                                 <div className="launches-content">
                                     <h2 className="launches-title">{item.name}</h2>
-                                    <Link to="/details" className="button launches-details">Подробнее</Link>
+                                    <Link to={`/details?#${item.id}`} className="button launches-details">Подробнее</Link>
                                 </div>
                             </article>
                         </li>
