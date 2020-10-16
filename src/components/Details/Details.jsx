@@ -1,20 +1,34 @@
-import React from 'react';
+import React,{useState, useEffect}  from 'react';
 import './Details.css';
+import FetchData from '../../FetchData';
+
+const fetchData = new FetchData();
 
 const Details = () => {
+    
+    const launchID = window.location.hash.slice(1);
+    const [launch, setLaunch] = useState([]);
+    
+    useEffect(() => {
+        fetchData.getLaunches()
+                .then( data =>  setLaunch(data.find( item => item.id === launchID )))
+    }, [launchID])
+    if(!launch) return null;
+    console.log(launch.links);
     return (
         <section className="details">
             <div className="container">
+                <h1 className="title">{launch.name}</h1>
                 <div className="details-row">
                     <div className="details-image">
-                        <img src="https://images2.imgbox.com/3c/0e/T8iJcSN3_o.png" alt="" />
+                        <img src={launch.links ? launch.links.patch.small : ''} alt={launch.name} />
                     </div>
                     <div className="details-content">
-                        <p className="details-description">Engine failure at 33 seconds and loss of vehicle</p>
+                        <p className="details-description">{launch.details}</p>
                     </div>
                 </div>
                 <div>
-                    <iframe className="details-youtube" width="560" height="315" src="https://www.youtube.com/embed/dLQ2tZEH6G0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <iframe className="details-youtube" width="560" height="315" src={launch.links ? launch.links.webcast : ''} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </div>
                 <div onClick={() => {window.history.back()}} className="button button-back">go back</div>
