@@ -49,12 +49,11 @@ class App extends React.Component {
   }
 
   render() {
-    if(!this.state.rocketFeatures) return null;
     return (
       <div className="App">
           <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
           <Main rocket={this.state.rocket}/>
-          <Features rocketFeatures={this.state.rocketFeatures}/>
+          {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />} 
           <Footer links={this.state.links}/>
       </div>
     );
