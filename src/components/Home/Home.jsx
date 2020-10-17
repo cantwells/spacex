@@ -10,7 +10,7 @@ const Home = ({ company }) => (
 					<img className="logo-title" src={logo} alt={company.name}/>
 				</h1>
 				<h2 className="subtitle">
-					{company.summary}
+					<span className="subtitle-text">{company.summary}</span>
 				</h2>
 			</hgroup>
 			<div className="row">
