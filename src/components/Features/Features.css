@@ -58,7 +58,7 @@
 	margin-bottom: 100px;
 }
 
-.table-title, .features-subtitle {
+.table-title, h3.features-subtitle {
 	font-weight: bold;
 	font-size: 24px;
 	line-height: 140%;

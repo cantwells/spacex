@@ -15,7 +15,10 @@
 	line-height: 2;
 }
 
-
+.subtitle-text {
+	display: inline-block;
+	max-width: 75%;
+}
 
 .row {
 	display: flex;

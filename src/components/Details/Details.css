@@ -34,6 +34,10 @@
 	margin: 0 30px;
 }
 
+.details-content {
+	max-width: 600px;
+}
+
 .details-youtube {
 	margin: 0 auto;
 	display: block;
