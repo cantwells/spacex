@@ -1,11 +1,13 @@
 import React,{useState, useEffect}  from 'react';
 import './Details.css';
 import FetchData from '../../FetchData';
+import {useHistory} from 'react-router-dom';
 
 const fetchData = new FetchData();
 
 const Details = () => {
     
+    const history = useHistory();
     const launchID = window.location.hash.slice(1);
     const [launch, setLaunch] = useState([]);
     
@@ -13,6 +15,7 @@ const Details = () => {
         fetchData.getLaunches()
                 .then( data =>  setLaunch(data.find( item => item.id === launchID )))
     }, [launchID])
+    console.log(launch);
     if(!launch) return null;
     return (
         <section className="details">
@@ -30,7 +33,7 @@ const Details = () => {
                     <iframe className="details-youtube" width="560" height="315" src={launch.links ? `https://www.youtube.com/embed/${launch.links.youtube_id}` : ''} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </div>
-                <div onClick={() => {window.history.back()}} className="button button-back">go back</div>
+                <div onClick={ history.goBack } className="button button-back">go back</div>
 	    </section>
     )
 }
