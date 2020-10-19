@@ -26,8 +26,10 @@ const Features = ({name, height, diameter, mass, payload_weights: payloadWeights
                             autoPlay 
                             loop 
                             muted 
-                            src={`./video/${videos.hasOwnProperty(name) ? videos[name] :
-                            videos.other }.mp4`}>
+                            // src={`./video/${videos.hasOwnProperty(name) ? videos[name] :
+                            // videos.other }.mp4`}>
+                            src={require(`../../../public/video/${videos.hasOwnProperty(name) ? videos[name] :
+                                videos.other }.mp4`)}>
                     </video>
                 </div>
             </section>
@@ -61,8 +63,9 @@ const Features = ({name, height, diameter, mass, payload_weights: payloadWeights
                     </table>
                     <ReactRelluxWrapper speed={14}>
                         <img
-                            src={`./imgs/${rockets[name]}.png`}
-                            alt="rocket"
+                            // src={`imgs/${rockets[name]}.png`}
+                            src={require(`./imgs/${rockets[name]}.png`)}
+                            alt={name}
                             className="rocket"
                             data-rellax-speed="14"
                         />
